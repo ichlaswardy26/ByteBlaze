@@ -16,6 +16,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "declaration": false,
-    "declarationMap": false
+    "declarationMap": false,
+    "strict": false
   }
 }
