@@ -1,4 +1,15 @@
 services:
+  lavalink:
+    image: fredboat/lavalink:4.0.8
+    container_name: lavalink
+    restart: unless-stopped
+    volumes:
+      - ./application.yml:/opt/Lavalink/application.yml
+    ports:
+      - "2333"  # internal only; byteblaze connects via Docker network
+    networks:
+      - byteblaze-net
+
   byteblaze:
     build: 
       context: .
@@ -7,16 +18,18 @@ services:
     restart: unless-stopped
     user: "1003:1003"
     volumes:
-      - ./app.yml:/app/app.yml        # Mount langsung ke root
-      - ./logs:/app/logs              # Direktori logs
-      - ./data:/app/data              # Direktori data
-      - ./languages:/app/languages    # Mount langsung ke localization bahasa
+      - ./app.yml:/app/app.yml
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./languages:/app/languages
     environment:
       - NODE_ENV=production
     deploy:
       resources:
         limits:
-          memory: 768M                # Lebih aman untuk VPS 2GB
+          memory: 768M
+    depends_on:
+      - lavalink
     networks:
       - byteblaze-net
 
