@@ -24,10 +24,7 @@ services:
       - ./languages:/app/languages
     environment:
       - NODE_ENV=production
-    deploy:
-      resources:
-        limits:
-          memory: 768M
+    mem_limit: 768m
     depends_on:
       - lavalink
     networks:
