@@ -8,7 +8,7 @@ bot:
   # You can add more than 1 token to clone the bot
   # Note that performance will be dreaded and you can't set each config for each cloned bot
   # Config data of each bot will be the same
-  TOKEN: 'MTM5OTQ3MzcxODY2MDU2MzA0OQ.G1kACp.R9PhnxJPBTaEwX6VVLhQ8SEvA1W3QZ_Db8Op5M'
+  TOKEN: 'MTM5OTQ3MzcxODY2MDU2MzA0OQ.Gqkn40.S_PMtnV68niEdGI62ruRq57uMSE2eguvlFK1WA'
   EMBED_COLOR: '#2B2D31'
   OWNER_ID: '701706867541540874'
   ADMIN: ['701706867541540874']
@@ -49,7 +49,7 @@ player:
   NODES:
     - host: 'lavalinkv4.serenetia.com'
       port: 443 # Your host port here
-      name: 'villainbots' #only a-z A-Z 0-9 and _
+      name: 'public-node' #only a-z A-Z 0-9 and _
       auth: 'https://dsc.gg/ajidevserver'
       secure: true
       # In rainlink, it support lavalink v3, lavalink v4 and nodelink v2 as driver
@@ -85,7 +85,7 @@ utilities:
     # Note: If you enter an invalid driver, bot will use json driver as default
     driver: 'json' # mongodb, mysql, json, postgres
     # Config depends on driver, you can see sample config at src/database/driver
-    config: { path: './villain.database.json' }
+    config: { path: './app/data/villain.database.json' }
     # Cache cleaning for reduce memory
     # This feature have the same API with this link below
     # https://github.com/node-cron/node-cron?tab=readme-ov-file#allowed-fields
