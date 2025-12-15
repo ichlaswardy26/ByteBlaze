@@ -25,7 +25,7 @@ player:
     secret: ''
 
   # Default search suggestion for auto complete, leave it empty will use default
-  AUTOCOMPLETE_SEARCH: ['']
+  AUTOCOMPLETE_SEARCH: []
 
   # Enable this if you want to use realtime duation in nowplaying command
   NP_REALTIME: true
