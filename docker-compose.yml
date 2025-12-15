@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: byteblaze
     restart: unless-stopped
+    user: "1003:1003"
     volumes:
       - ./app.yml:/app/app.yml        # Mount langsung ke root
       - ./logs:/app/logs              # Direktori logs
