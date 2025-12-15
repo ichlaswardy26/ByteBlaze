@@ -8,7 +8,7 @@ services:
     volumes:
       - ./app.yml:/app/app.yml        # Mount langsung ke root
       - ./logs:/app/logs              # Direktori logs
-      - .//app/data              # Direktori data
+      - ./data:/app/data              # Direktori data
     environment:
       - NODE_ENV=production
     deploy:
