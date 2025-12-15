@@ -2,16 +2,13 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Salin package.json terlebih dahulu
+# Salin package files
 COPY package*.json ./
 
-# Install versi spesifik dependency
-RUN npm install discord.js@14.11.0 @discordjs/voice@0.16.0 @discordjs/builders@1.6.3
-
-# Install dependensi lainnya
+# Install SEMUA dependensi sekaligus (jangan pecah)
 RUN npm install
 
-# Copy semua file
+# Copy source code
 COPY . .
 
 # Build bot
