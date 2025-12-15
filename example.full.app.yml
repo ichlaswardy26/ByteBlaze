@@ -108,7 +108,7 @@ utilities:
 
   # WS/REST server for using web player
   WEB_SERVER:
-    host: '0.0.0.0'
+    host: 'byteblaze'
     enable: true
     port: 3001
     whitelist: [] # Example: ["lavalink.dev"]
