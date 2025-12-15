@@ -9,6 +9,7 @@ services:
       - ./app.yml:/app/app.yml        # Mount langsung ke root
       - ./logs:/app/logs              # Direktori logs
       - ./data:/app/data              # Direktori data
+      - ./languages:/app/languages    # Mount langsung ke localization bahasa
     environment:
       - NODE_ENV=production
     deploy:
