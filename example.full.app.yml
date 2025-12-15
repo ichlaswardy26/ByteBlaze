@@ -10,8 +10,8 @@ bot:
   # Config data of each bot will be the same
   TOKEN: 'Bot Token 1'
   EMBED_COLOR: '#2B2D31'
-  OWNER_ID: 'Your User ID'
-  ADMIN: ['<your_trusted_admin_discord_id_here>']
+  OWNER_ID: '701706867541540874'
+  ADMIN: ['701706867541540874']
   # You can set it to en, vi...
   LANGUAGE: 'en'
   DEBUG_MODE: false
@@ -25,10 +25,10 @@ player:
     secret: ''
 
   # Default search suggestion for auto complete, leave it empty will use default
-  AUTOCOMPLETE_SEARCH: ['yorushika', 'yoasobi', 'tuyu', 'hinkik']
+  AUTOCOMPLETE_SEARCH: ['']
 
   # Enable this if you want to use realtime duation in nowplaying command
-  NP_REALTIME: false
+  NP_REALTIME: true
 
   # The amount of time before the bot leaves the VC in milliseconds
   LEAVE_TIMEOUT: 60000
@@ -43,14 +43,14 @@ player:
   LIMIT_TRACK: 50
 
   # The number of playlist you want to limit
-  LIMIT_PLAYLIST: 20
+  LIMIT_PLAYLIST: 10
 
   # You can add more Lavalink servers!
   NODES:
-    - host: 'IP'
+    - host: '0.0.0.0'
       port: 2333 # Your host port here
-      name: 'Name' #only a-z A-Z 0-9 and _
-      auth: 'Password'
+      name: 'villainbots' #only a-z A-Z 0-9 and _
+      auth: 'qwerty12345'
       secure: false
       # In rainlink, it support lavalink v3, lavalink v4 and nodelink v2 as driver
       # If you put the wrong driver identify here or not put anything here,
@@ -61,7 +61,7 @@ player:
       # | Lavalink | v4.0.0 - v4.x.x  | lavalink/v4/koinu |
       # | Lavalink | v3.0.0 - v3.7.x  | lavalink/v3/koto  |
       # | Nodelink | v2.0.0 - v2.x.x  | lavalink/v3/koto  |
-      driver: 'lavalink@4'
+      driver: 'lavalink/v4/koinu'
 
 utilities:
   # Enable debug tools for execute code from bot
@@ -70,22 +70,22 @@ utilities:
   # use: sudo rdc help, for more command
   DEBUG_TOOLS: true
   # Log register premium activities
-  PREMIUM_LOG_CHANNEL: ''
+  PREMIUM_LOG_CHANNEL: '1330497046309765184'
   # Log all the guild that bot joined or leaved
-  GUILD_LOG_CHANNEL: ''
+  GUILD_LOG_CHANNEL: '1330497046309765184'
   # Log all unhandled, error, warnings on discord
-  LOG_CHANNEL: ''
+  LOG_CHANNEL: '1330497046309765184'
   # The timeout for deleting msg in milliseconds
   DELETE_MSG_TIMEOUT: 3000
   # Auto resume when bot restarted suddenly
-  AUTO_RESUME: false
+  AUTO_RESUME: true
 
   # Database services config
   DATABASE:
     # Note: If you enter an invalid driver, bot will use json driver as default
     driver: 'json' # mongodb, mysql, json, postgres
     # Config depends on driver, you can see sample config at src/database/driver
-    config: { path: './cylane.database.json' }
+    config: { path: './villain.database.json' }
     # Cache cleaning for reduce memory
     # This feature have the same API with this link below
     # https://github.com/node-cron/node-cron?tab=readme-ov-file#allowed-fields
@@ -98,21 +98,21 @@ utilities:
     # Whenever you want to use prefix command or not
     commands:
       enable: true
-      prefix: 'd!' # The prefix you want
+      prefix: 'vm!' # The prefix you want
 
   # Fix the Lavalink server when the current is down
   AUTOFIX_LAVALINK:
-    enable: false
+    enable: true
     retryCount: 10
     retryTimeout: 3000
 
   # WS/REST server for using web player
   WEB_SERVER:
-    host: '0.0.0.0'
-    enable: false
-    port: 3000
+    host: '43.129.55.161'
+    enable: true
+    port: 3001
     whitelist: [] # Example: ["lavalink.dev"]
-    auth: 'youshallnotpass'
+    auth: 'qwerty12345'
 
   # Because discord-hybrid-sharding not working with this bot
   SHARDING_SYSTEM:
