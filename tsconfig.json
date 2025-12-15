@@ -16,7 +16,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "declaration": false,
-    "declarationMap": false,
-    "strict": false
-  }
+    "declarationMap": false
+  },
+  "exclude": [
+    "src/commands/**/*"
+  ]
 }
