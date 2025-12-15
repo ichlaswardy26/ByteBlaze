@@ -85,7 +85,7 @@ utilities:
     # Note: If you enter an invalid driver, bot will use json driver as default
     driver: 'json' # mongodb, mysql, json, postgres
     # Config depends on driver, you can see sample config at src/database/driver
-    config: { path: './app/data/villain.database.json' }
+    config: { path: '/app/data/villain.database.json' }
     # Cache cleaning for reduce memory
     # This feature have the same API with this link below
     # https://github.com/node-cron/node-cron?tab=readme-ov-file#allowed-fields
