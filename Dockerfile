@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -21,3 +21,4 @@ RUN mkdir -p /app/logs /app/data && \
 USER node
 
 CMD ["npm", "start"]
+
