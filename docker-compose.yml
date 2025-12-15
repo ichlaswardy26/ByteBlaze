@@ -1,31 +1,20 @@
 services:
-  lavalink:
-    image: ghcr.io/lavalink-devs/lavalink:4.0.0-alpine
-    restart: unless-stopped
-    environment:
-      - SERVER_PORT=2333
-      - LAVALINK_SERVER_PASSWORD=youshallnotpass
-      - JAVA_OPTS=-Xmx768M  # Batasi penggunaan RAM
-    volumes:
-      - ./lavalink-config/application.yml:/opt/Lavalink/application.yml
-    networks:
-      - byteblaze-net
-
   byteblaze:
     build: 
       context: .
       dockerfile: Dockerfile
+    container_name: byteblaze
     restart: unless-stopped
-    depends_on:
-      - lavalink
     volumes:
-      - ./config:/app/config
+      - ./app.yml:/app/app.yml        # Mount langsung ke root
+      - ./logs:/app/logs              # Direktori logs
+      - .//app/data              # Direktori data
     environment:
       - NODE_ENV=production
     deploy:
       resources:
         limits:
-          memory: 864M  # Batasi penggunaan RAM
+          memory: 768M                # Lebih aman untuk VPS 2GB
     networks:
       - byteblaze-net
 
