@@ -1,24 +1,22 @@
 FROM node:20-alpine
-
-WORKDIR /app
-
-# Salin package files
-COPY package*.json ./
-
-# Install SEMUA dependensi sekaligus (jangan pecah)
-RUN npm install
-
-# Copy source code
-COPY . .
-
-# Build bot
-RUN npm run build:full
-
-# Buat direktori yang dibutuhkan
-RUN mkdir -p /app/logs /app/data && \
-    chown -R node:node /app/logs /app/data
-
-USER node
-
-CMD ["npm", "start"]
-
+‎
+‎WORKDIR /app
+‎
+‎# Install dependencies
+‎COPY package*.json ./
+‎RUN npm install
+‎
+‎# Copy source code
+‎COPY . .
+‎
+‎# Build bot
+‎RUN npm run build:full
+‎
+‎# Fix permission untuk direktori data
+‎RUN mkdir -p /app/data /app/logs && \
+‎    chown -R node:node /app/data /app/logs && \
+‎    chmod -R 775 /app/data /app/logs
+‎
+‎USER node
+‎
+‎CMD ["npm", "start"]
