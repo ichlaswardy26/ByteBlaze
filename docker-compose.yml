@@ -2,66 +2,35 @@ version: '3.8'
 
 services:
   lavalink:
-    image: ghcr.io/lavalink-devs/lavalink:latest-alpine
-    container_name: lavalink
-    user: root
+    image: ghcr.io/lavalink-devs/lavalink:4.0.0-alpine
     restart: unless-stopped
     environment:
       - SERVER_PORT=2333
       - LAVALINK_SERVER_PASSWORD=youshallnotpass
+      - JAVA_OPTS=-Xmx768M  # Batasi penggunaan RAM
     volumes:
-      - ./docker/application.yml:/opt/Lavalink/application.yml
-      - ./plugins/:/opt/Lavalink/plugins/
+      - ./lavalink-config/application.yml:/opt/Lavalink/application.yml
     networks:
-      - lavalink
-    expose:
-      - 2333
-    ports:
-      - '2333:2333'
-
-  mongodb:
-    container_name: mongodb
-    ports:
-      - 27017:27017
-    image: mongo:latest
-    user: root
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: byteblaze
-      MONGO_INITDB_ROOT_PASSWORD: cylane
-    restart: on-failure
-    networks:
-      - mongodb-net
-    volumes:
-      - ./mongodb_data:/data/db
-    hostname: mongodb
+      - byteblaze-net
 
   byteblaze:
-    build: .
-    image: byteblaze:latest
-    container_name: byteblaze
-    user: root
+    build: 
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
-    networks:
-      - lavalink
-      - mongodb-net
     depends_on:
       - lavalink
-      - mongodb
+    volumes:
+      - ./config:/app/config
     environment:
-      - DOCKER_COMPOSE_DATABASE=true
-      - DOCKER_COMPOSE_MODE=true
-      # Database
-      - MONGO_URI=mongodb://byteblaze:cylane@mongodb:27017/production?directConnection=true&authSource=admin&replicaSet=replicaset&retryWrites=true
-      # Lavalink
-      - NODE_HOST=lavalink
-      - NODE_PORT=2333
-      - NODE_AUTH=youshallnotpass
+      - NODE_ENV=production
+    deploy:
+      resources:
+        limits:
+          memory: 512M  # Batasi penggunaan RAM
+    networks:
+      - byteblaze-net
 
 networks:
-  mongodb-net:
-  lavalink: # create a lavalink network you can add other containers to, to give them access to Lavalink
-    name: lavalink
-
-volumes:
-  mongodb_data:
-    external: true
+  byteblaze-net:
+    name: byteblaze-network
